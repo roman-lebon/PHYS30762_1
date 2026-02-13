@@ -16,6 +16,12 @@ int main()
   char unit; // unit for output, either J (Joules) or e (Electron Volts) (character)
 
   // We then ask the user to input values for Z, n_i, n_j, unit
-  std::cout << "Please enter values for: Atomic number, initial quantum number, final quantum number, and unit (J or e):"; // Use the output stream std::cout to print a message to ask the user
+  std::cout << "\nPlease enter values for: Atomic number, initial quantum number, final quantum number, and unit (J or e):"; // Use the output stream std::cout to print a message to ask the user
   std::cout << "\nEnter these values, seperated by spaces, in the order they appear above: "; // Prompt user on correct input format
+
+  std::cin >> Z >> n_i >> n_j >> unit; // Use the input stream std::cin to read user input
+    
+  std::cout << "\nYou entered: " << Z << " " << n_i << " " << n_j << " " << unit << "\n";
+
+  return 0;
 }
