@@ -5,6 +5,8 @@
 
 // We include the standard input/output library
 #include <iostream>
+#include <sstream>
+#include <string>
 
 // Include function before main to calculate the energy, given the four inputs
 double formula(int Z, int n_i, int n_j, char unit) {
@@ -47,19 +49,21 @@ int main() {
 
     // Create a loop that prompts new input until all validity checks are passed
     while (!valid_input) {
-        
-    std::cin >> Z >> n_i >> n_j >> unit; // Use the input stream std::cin to read user input
+    
+    // Declare a string to store user input from std:cin in (makes checks easier)
+    std::string input;
+    std::getline(std::cin, input); 
+    std::stringstream input_stream(input); 
+    input_stream >> Z >> n_i >> n_j >> unit; // Extract the values from the input string into the required variables
 
     // Check the validity of the input formatting
-    if (std::cin.fail()) {
+    if (input_stream.fail()) {
         std::cout << "Invalid input format. Refer above to the input instructions, and try again: ";
-        std::cin.clear(); // Clear the error bit
-        std::cin.ignore(10000, '\n'); // Ignore invalid input
         continue;
     }
 
     // Check the validity of the atomic number 
-    else if (Z < 1) {
+    if (Z < 1) {
         std::cout << "Invalid atomic number (must be a positive integer). Please try again: ";
     }
 
