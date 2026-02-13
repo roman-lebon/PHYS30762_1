@@ -7,8 +7,7 @@
 #include <iostream>
 
 // We always include a main function at program startup
-int main()
-{
+int main() {
   // Declare variables - no initialisation as user(s) will input values
   int Z; // atomic number (integer)
   int n_i; // initial energy level (integer)
@@ -18,10 +17,14 @@ int main()
   // We then ask the user to input values for Z, n_i, n_j, unit
   std::cout << "\nPlease enter values for: Atomic number, initial quantum number, final quantum number, and unit (J or e):"; // Use the output stream std::cout to print a message to ask the user
   std::cout << "\nEnter these values, seperated by spaces, in the order they appear above: "; // Prompt user on correct input format
-
+  
   std::cin >> Z >> n_i >> n_j >> unit; // Use the input stream std::cin to read user input
-    
-  std::cout << "\nYou entered: " << Z << " " << n_i << " " << n_j << " " << unit << "\n";
 
+  while(std::cin.fail()) {
+    std::cout << "\nInvalid input. Refer to the above input instructions, and please try again: "; 
+    std::cin.clear(); // Clear fail bit 
+    std::cin.ignore(1000, '\n'); // Ignore invalid input (whole line)
+    std::cin >> Z >> n_i >> n_j >> unit;
+    }
   return 0;
 }
