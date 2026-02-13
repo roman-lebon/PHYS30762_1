@@ -80,6 +80,19 @@ int main() {
 
   }
 
+  double E = formula(Z, n_i, n_j, unit); // Call function defined earlier with user input values
+
+  std::cout << "Transition energy = " << E; // Output result
+
+  // Make sure we output result with correct units
+  if (unit == 'e') {
+    std::cout << " eV\n";
+  }
+  
+  else {
+    std::cout << " J\n";
+  }
+
   return 0;
 }
 
