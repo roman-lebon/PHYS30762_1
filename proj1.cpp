@@ -6,6 +6,23 @@
 // We include the standard input/output library
 #include <iostream>
 
+// Include function before main to calculate the energy, given the four inputs
+double formula(int Z, int n_i, int n_j, char unit) {
+
+    double E = 136000.0 * Z * Z * (1.0/(n_j*n_j) - 1.0/(n_i*n_i)); // Formula provided
+
+    if (unit == 'e') {
+        return E;
+    }
+
+    else if (unit == 'J'){
+        E = E * 1.602176634e-19; // Conversion from Electron Volts to Joules
+        return E;
+    }
+
+    return 0.0;
+  }
+
 // We always include a main function at program startup
 int main() {
   // Declare variables - no initialisation as user(s) will input values
@@ -62,7 +79,7 @@ int main() {
     }
 
   }
-  
+
   return 0;
 }
 
