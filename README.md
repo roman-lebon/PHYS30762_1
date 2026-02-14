@@ -1,2 +1,19 @@
-# PHYS30762_1
-PHYS30762 Assignment 1
+# PHYS30762 Assignment 1 
+
+This program calculates the photon energy emitted during an electron transition using the Bohr model. The user inputs the atomic number, the initial and final quantum numbers, and the preferred energy units (Joules or electron volts).
+
+I defined a function at the start of the program to handle the actual calculation of the photon energy. It would take the aforementioned inputs from the user, substitute them into the given equation and output the result - converting units if necessary. 
+
+After this, I defined the program's main function, declared the variables that user input would be stored in and the variable defining whether the user would restart or end the program upon calculation. I immediately put this into use, opening a while loop which would contain the entirety of the program - thus, allowing the program to easily be restarted if the user chose to (restart variable would remain unchanged) or ended (restart variable would change, breaking the loop). 
+
+The main block of code begins by using output stream (std::cout) to ask the user to input the required variables: Atomic number, initial quantum number, final quantum number, and the unit (J or e). 
+
+My goal was then to run validity checks on the input - checking for formatting errors (any input not of the format x_x_x_x, where x is any valid input for the respective variables), as well as errors relating to the mathematical constraints of the formula used. These were as follows: The atomic number must be a positive integer; the initial/final quantum numbers must be positive integers, with the initial greater than the final (note, I allowed the user to input these as equal, which would always just result in a result of zero transition energy).
+
+A boolean value representing whether an input was valid was initialised and set to false. I used these as a condition for my next while loop, containing all the checks. The checks in this loop were all handled with fairly simple if statements, which I thought an easy way to structure the validation. This is because if all were executed, the end of the loop would be reached - at which point I would change the state of valid_input to true and no more checks would be made. Having the validation in a loop like this also allowed for the easy output of error messages to the user (for invalid inputs) and the easy restart of all checks. 
+
+Something to note was that, in earlier attempts of the code I used a simple chained input to obtain an input of the user's desired variables directly from their keyboard. Later on I realised, although almost perfect, this caused slight quality-of-life issues. Because the extraction operator (>>) stops reading at a whitespace, an integer input such as '1234' would only fill the first variable and would still wait for more tokens to fill the remaining. This wouldn't trigger cin.fail(), no error message would be output, and also caused some odd looking (exclusively visual) terminal bugs. To solve this I decided to read user input as a full line string (using std::getline) and then parsed using std::stringstream (which treats a string like a user keyboard input, allowing formatted extraction as before - without any of the prior issues).  
+
+Once the user input was valid, the main difficulty of the code had been overcome. All that was left was to run the earlier defined function with the validated user inputs, obtain the correct outcome and output it accompanied by the chosen units. After this I then asked the user if they wanted to restart, set the restart variable to their keyboard input - allowing for the restart/break of the earlier mentioned while loop containing the program. Note, after reading this restart character, a newline character remained in the input buffer. Therefore, I had to include a line to remove this, as if not removed, the following std::getline (caused if the user chose to restart the program) would immediately interpret this as an empty input line - outputting an unnecessary error message. 
+
+After a short validation check for the user's 'restart' input, the while loop was closed and zero was returned (main function always requires an output) - thus, concluding the project. 
