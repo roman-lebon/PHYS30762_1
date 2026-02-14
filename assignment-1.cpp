@@ -39,7 +39,7 @@ int main() {
 
     // Ask the user to input values for Z, n_i, n_j, unit
     std::cout << "\nPlease enter values for: Atomic number, initial quantum number, final quantum number, and unit (J or e):"; // Use the output stream std::cout to print a message to ask the user
-    std::cout << "\nEnter these values, seperated by spaces, in the order they appear above: "; // Prompt user on correct input format
+    std::cout << "\nEnter these values, separated by spaces, in the order they appear above: "; // Prompt user on correct input format
 
     // We must check the formatting and mathematical validity of the user's input
     // We can use a loop to prompt the user for new inputs until their input is valid
@@ -49,7 +49,7 @@ int main() {
     // Create a loop that prompts new input until all validity checks are passed
     while (!valid_input) {
     
-        // Declare a string to store user input from std:cin in (makes checks easier)
+        // Declare a string to store user input from std::cin in (makes checks easier)
         std::string input;
         std::getline(std::cin, input); 
         std::stringstream input_stream(input); 
@@ -77,7 +77,7 @@ int main() {
             std::cout << "Invalid initial/final quantum numbers (must be positive integers). Please try again: ";
         }
 
-        else if (n_i < n_j) { // CHECK IF THIS CAN BE <= OR JUST < WITH LECTURERS
+        else if (n_i < n_j) {
             std::cout << "Invalid initial/final quantum numbers (initial must be greater than final). Please try again: ";
         }
 
@@ -106,7 +106,7 @@ int main() {
         std::cout << " J\n";
     }
 
-    // Prompt user whether to restart/end the programme
+    // Prompt user whether to restart/end the program
     std::cout << "Would you like to calculate another value? Please enter (y/n): ";
     std::cin >> restart;
     std::cin.ignore(10000, '\n'); // Clear leftover newline so getline() doesn't read an empty line after restart and interpret it as an invalid input 
